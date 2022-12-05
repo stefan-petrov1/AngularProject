@@ -16,11 +16,7 @@ export class ErrorBoundaryComponent implements OnInit {
 
   ngOnInit() {
     this.internalErrors$$.subscribe((err: any) => {
-      if (err) {
-        this.error = true;
-      } else {
-        this.error = false;
-      }
+      this.error = !!err;
     });
   }
 }
