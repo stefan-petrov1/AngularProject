@@ -1,0 +1,20 @@
+{
+  "name": "angularproject",
+  "version": "1.0.0",
+  "description": "This is my frontend project for SoftUni using Angular",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefan-petrov1/AngularProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stefan-petrov1/AngularProject/issues"
+  },
+  "homepage": "https://github.com/stefan-petrov1/AngularProject#readme"
+}
