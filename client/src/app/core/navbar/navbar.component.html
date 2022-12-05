@@ -1,0 +1,42 @@
+<nav class="navbar">
+  <div class="logo-container">
+    <img class="logo" src="assets/images/logo.png" alt="No Logo" />
+
+    <a routerLink="/" class="nav-bar-home-link">
+      <p class="logo-text">
+
+        <span class="white bold">DINOSAUR'S </span>
+        <span class="gray">AUCTION</span>
+      </p>
+
+    </a>
+  </div>
+  <div class="right-section">
+    <a routerLink="/catalog">Catalog</a>
+    <ng-container *ngIf="true; then userSection; else guestSection"></ng-container>
+
+    <a routerLink="/cart" class="shopping-cart-container">
+      <img class="shopping-cart-icon" alt="Shopping Cart" src="assets/images/shopping-cart-icon.png" />
+
+      <!-- Display only if there are cart items -->
+      <p class="shopping-cart-item-count">2</p>
+    </a>
+  </div>
+</nav>
+
+<ng-template #userSection>
+  <div class="user-section navbar-section">
+    <a routerLink="/create">Create</a>
+    <a routerLink="/profile">Profile</a>
+    <a routerLink="/logout" class="logout-anchor">
+      Logout
+    </a>
+  </div>
+</ng-template>
+
+<ng-template #guestSection>
+  <div class="guest-section navbar-section">
+    <a routerLink="/login">Log In</a>
+    <a routerLink="/register">Sign up</a>
+  </div>
+</ng-template>
