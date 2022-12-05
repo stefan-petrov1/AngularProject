@@ -1,0 +1,7 @@
+<ng-content *ngIf="!error"></ng-content>
+
+<section *ngIf="error" class="not-found-container">
+  <p class="not-found-number">500</p>
+  <p class="not-found-title">Ooops!!</p>
+  <p class="not-found-text">Try to refresh the page or feel free to contact us if the problem persists</p>
+</section>

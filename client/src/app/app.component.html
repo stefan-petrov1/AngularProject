@@ -1,11 +1,13 @@
-<header>
-  <app-navbar></app-navbar>
-  <app-searchbar></app-searchbar>
-</header>
+<app-error-boundary>
+  <header>
+    <app-navbar></app-navbar>
+    <app-searchbar></app-searchbar>
+  </header>
 
-<main id="main">
-  <app-spinner></app-spinner>
-  <router-outlet></router-outlet>
-</main>
+  <main id="main">
+    <app-spinner></app-spinner>
+    <router-outlet></router-outlet>
+  </main>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>
+</app-error-boundary>
