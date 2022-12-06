@@ -1,0 +1,59 @@
+<article class="sign-container-center">
+  <div class="sign-container register-container">
+    <p class="sign-title">SIGN UP</p>
+    <form class="sign-form" [formGroup]="signupForm">
+      <div class="sign-field-input-container">
+        <input class="sign-in-field-input" placeholder="Email" type="email" name="email" formControlName="email" />
+
+        <ng-container *ngIf="signupForm.get('email')?.touched">
+          <p class="sign-error" *ngIf="signupForm.get('email')?.errors?.['required']">Email is required!</p>
+          <p class="sign-error" *ngIf="signupForm.get('email')?.errors?.['appEmailValidator']">Email must be a valid
+            email!</p>
+        </ng-container>
+      </div>
+
+      <ng-container formGroupName="passwords">
+        <div class="sign-field-input-container">
+          <input class="sign-in-field-input" placeholder="Password" type="password" name="password"
+            formControlName="password" />
+          <ng-container *ngIf="signupForm.get('passwords')?.get('password')?.touched">
+            <p class="sign-error" *ngIf="signupForm.get('passwords')?.get('password')?.errors?.['required']">Password is
+              required!</p>
+            <p class="sign-error" *ngIf="signupForm.get('passwords')?.get('password')?.errors?.['minlength']">Password
+              must
+              be at least 5
+              characters!</p>
+          </ng-container>
+        </div>
+        <div class="sign-field-input-container">
+          <input class="sign-in-field-input" placeholder="Repeat Password" type="password" name="repeatPassword"
+            formControlName="rePassword" />
+
+          <p *ngIf="signupForm.get('passwords')?.errors?.['sameValueGroupValidator'] && signupForm.get('passwords')?.get('rePassword')?.touched"
+            class="sign-error">Repeat Password does not match password!</p>
+        </div>
+      </ng-container>
+
+      <div class="sign-field-input-container">
+        <input class="age-checkbox" type="checkbox" name="over18" formControlName="ageCheck" />
+        <label class="age-label" for="over18">
+          I agree I'm at least 18 years old.
+        </label>
+
+        <p class="sign-error age-check" *ngIf="signupForm.get('ageCheck')?.dirty && signupForm.get('ageCheck')?.errors">
+          Age
+          agreement is required!
+        </p>
+      </div>
+
+      <button (click)="onSubmit()" class="sign-btn" [disabled]="!signupForm.pristine && signupForm.invalid"
+        [ngStyle]="{cursor: !signupForm.pristine && signupForm.invalid ? 'not-allowed' : ''}">
+        SIGN UP
+      </button>
+    </form>
+    <p class="sign-already-a-user">
+      Already a user?
+      <a routerLink="/login">LOGIN</a>
+    </p>
+  </div>
+</article>

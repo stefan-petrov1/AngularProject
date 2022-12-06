@@ -12,7 +12,6 @@ export class CustomErrorHandler implements ErrorHandler {
   handleError(err: any) {
     if (!(err instanceof HttpErrorResponse)) {
       this.internalErrors$$.next(err);
-      return;
     }
 
     console.error(err);

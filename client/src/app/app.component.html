@@ -1,13 +1,17 @@
-<app-error-boundary>
-  <header>
-    <app-navbar></app-navbar>
-    <app-searchbar></app-searchbar>
-  </header>
+<app-authenticate>
+  <app-error-boundary>
+    <app-error></app-error>
 
-  <main id="main">
-    <app-spinner></app-spinner>
-    <router-outlet></router-outlet>
-  </main>
+    <header>
+      <app-navbar></app-navbar>
+      <app-searchbar></app-searchbar>
+    </header>
 
-  <app-footer></app-footer>
-</app-error-boundary>
+    <main id="main">
+      <!-- <app-spinner></app-spinner> -->
+      <router-outlet></router-outlet>
+    </main>
+
+    <app-footer></app-footer>
+  </app-error-boundary>
+</app-authenticate>

@@ -13,7 +13,7 @@
   </div>
   <div class="right-section">
     <a routerLink="/catalog">Catalog</a>
-    <ng-container *ngIf="true; then userSection; else guestSection"></ng-container>
+    <ng-container *ngIf="authService.isUserAuthenticated; then userSection; else guestSection"></ng-container>
 
     <a routerLink="/cart" class="shopping-cart-container">
       <img class="shopping-cart-icon" alt="Shopping Cart" src="assets/images/header/shopping-cart-icon.png" />

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './core/home/home.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { Pages } from './shared/enums';
@@ -25,13 +25,20 @@ const routes: Routes = [
     },
   },
   {
+    path: '',
+    loadChildren: () =>
+      import('./auth/auth-routing.module').then((m) => m.AuthRoutingModule),
+  },
+  {
     path: '**',
     redirectTo: Pages.NotFound,
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
