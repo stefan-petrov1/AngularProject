@@ -3,8 +3,9 @@ import {
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
+  HTTP_INTERCEPTORS,
 } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Provider } from '@angular/core';
 import { Observable } from 'rxjs';
 import { USER_STORAGE_KEY } from 'src/app/shared/constants';
 import { IUser } from 'src/app/shared/interfaces';
@@ -38,3 +39,9 @@ export class RequestInterceptor implements HttpInterceptor {
     return next.handle(request);
   }
 }
+
+export const RequestInterceptorProvider: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: RequestInterceptor,
+  multi: true,
+};

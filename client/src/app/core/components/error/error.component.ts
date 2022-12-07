@@ -1,6 +1,6 @@
 import { Component, Inject, OnDestroy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { API_ERROR_KEY } from '../../constants';
+import { API_ERROR_KEY } from '../../../shared/constants';
 
 @Component({
   selector: 'app-error',

@@ -46,8 +46,9 @@
         </p>
       </div>
 
-      <button (click)="onSubmit()" class="sign-btn" [disabled]="!signupForm.pristine && signupForm.invalid"
-        [ngStyle]="{cursor: !signupForm.pristine && signupForm.invalid ? 'not-allowed' : ''}">
+      <button (click)="onSubmit()" class="sign-btn"
+        [disabled]="submitted || (!signupForm.pristine && signupForm.invalid)"
+        [ngStyle]="{cursor: submitted || (!signupForm.pristine && signupForm.invalid) ? 'not-allowed' : ''}">
         SIGN UP
       </button>
     </form>

@@ -11,18 +11,19 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   @ViewChild('form') loginForm!: NgForm;
+  submitted = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
   onSubmit() {
+    this.submitted = true;
     const { email, password } = this.loginForm.value;
 
-    this.authService.login(email, password).subscribe((user) => {
-      if (user) {
-        this.router.navigate([Pages.Home]);
-      }
+    this.authService.login(email, password).subscribe({
+      next: () => this.router.navigate([Pages.Home]),
+      error: () => (this.submitted = false),
     });
   }
 }

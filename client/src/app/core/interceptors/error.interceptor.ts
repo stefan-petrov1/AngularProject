@@ -4,8 +4,9 @@ import {
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
+  HTTP_INTERCEPTORS,
 } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, Provider } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   BehaviorSubject,
@@ -66,3 +67,9 @@ export class ErrorInterceptor implements HttpInterceptor {
     );
   }
 }
+
+export const ErrorInterceptorProvider: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: ErrorInterceptor,
+  multi: true,
+};

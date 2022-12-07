@@ -13,8 +13,8 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.logout().subscribe({
-      next: () => this.router.navigate([Pages.Catalog]),
-      error: () => this.router.navigate([Pages.Catalog]),
+      next: () => this.router.navigate([Pages.Home]),
+      error: () => this.router.navigate([Pages.Home]),
     });
   }
 }

@@ -1,15 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { ErrorComponent } from './components/error/error.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SearchbarComponent } from './components/searchbar/searchbar.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ErrorBoundaryComponent } from './error-boundary/error-boundary.component';
-import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { ErrorInterceptor } from './interceptors/error.interceptor';
-import { RequestInterceptor } from './interceptors/request.interceptor';
-import { NavbarComponent } from './navbar/navbar.component';
+import { ErrorInterceptorProvider } from './interceptors/error.interceptor';
+import { ManageHttpInterceptorProvider } from './interceptors/manage-http.interceptor';
+import { RequestInterceptorProvider } from './interceptors/request.interceptor';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { SearchbarComponent } from './searchbar/searchbar.component';
 
 @NgModule({
   declarations: [
@@ -19,25 +22,24 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
     HomeComponent,
     NotFoundComponent,
     ErrorBoundaryComponent,
+    ErrorComponent,
+    SpinnerComponent,
+    AuthenticateComponent,
   ],
   imports: [CommonModule, RouterModule],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: RequestInterceptor,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ErrorInterceptor,
-      multi: true,
-    },
+    RequestInterceptorProvider,
+    ErrorInterceptorProvider,
+    ManageHttpInterceptorProvider,
   ],
   exports: [
     NavbarComponent,
     SearchbarComponent,
     FooterComponent,
     ErrorBoundaryComponent,
+    ErrorComponent,
+    SpinnerComponent,
+    AuthenticateComponent,
   ],
 })
 export class CoreModule {}

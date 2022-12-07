@@ -22,8 +22,8 @@
             characters!</p>
         </ng-container>
       </div>
-      <button class="sign-btn" (click)="onSubmit()" [disabled]="form.invalid"
-        [ngStyle]="{cursor: form.invalid ? 'not-allowed' : ''}">
+      <button class="sign-btn" (click)="onSubmit()" [disabled]="submitted || form.invalid"
+        [ngStyle]="{cursor: submitted || form.invalid ? 'not-allowed' : ''}">
         Login
       </button>
     </form>
