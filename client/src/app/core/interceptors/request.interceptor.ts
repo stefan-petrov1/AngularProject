@@ -25,8 +25,6 @@ export class RequestInterceptor implements HttpInterceptor {
         this.localService.getData(USER_STORAGE_KEY) || '{}'
       );
 
-      console.log(user);
-
       request = request.clone({
         url: request.url.replace('api', apiUrl),
         setHeaders: user.accessToken

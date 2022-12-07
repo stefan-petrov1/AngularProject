@@ -12,6 +12,9 @@ export class AuthenticateComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.authService.authenticate(() => (this.isAuthenticating = false));
+    this.authService.authenticate().subscribe({
+      next: () => (this.isAuthenticating = false),
+      error: () => (this.isAuthenticating = false),
+    });
   }
 }

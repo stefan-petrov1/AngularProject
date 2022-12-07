@@ -1,6 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, tap, withLatestFrom } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  tap,
+  throwError,
+  withLatestFrom,
+} from 'rxjs';
 import { USER_STORAGE_KEY } from 'src/app/shared/constants';
 import { IUser } from 'src/app/shared/interfaces';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
@@ -45,46 +51,48 @@ export class AuthService {
       .pipe(tap((user) => this.users$$.next(user)));
   }
 
-  logout(callback: Function) {
-    return this.httpClient.get<undefined>('api/users/logout').subscribe({
-      next: () => this.logoutAction(callback),
-      error: () => this.logoutAction(callback),
-    });
-  }
-
-  userDetails() {
-    return this.httpClient.get<Partial<IUser>>('api/users/me').pipe(
-      withLatestFrom(this.user$),
-      tap(([userFromReq, oldUser]) => {
-        // userFromReq doesn't have the accessToken property
-
-        Object.assign(oldUser || {}, userFromReq);
-        this.users$$.next(oldUser);
+  logout() {
+    return this.httpClient.get<undefined>('api/users/logout').pipe(
+      catchError((e: any) => {
+        this.clearUser();
+        return throwError(() => e);
+      }),
+      tap(() => {
+        this.clearUser();
       })
     );
   }
 
-  authenticate(callback: Function) {
-    return this.userDetails().subscribe({
-      next: () => this.authenticateAction(callback),
-      error: () => {
+  userDetails() {
+    return this.httpClient.get<IUser>('api/users/me').pipe(
+      withLatestFrom(this.user$),
+      tap(
+        ([userFromReq, oldUser]: [
+          Omit<IUser, 'accessToken'>,
+          IUser | null
+        ]) => {
+          Object.assign(oldUser || {}, userFromReq);
+          this.users$$.next(oldUser);
+        }
+      )
+    );
+  }
+
+  authenticate() {
+    return this.userDetails().pipe(
+      catchError((e: any) => {
         this.clearUser();
-        this.authenticateAction(callback);
-      },
-    });
+        this.initialAuthenticate = true;
+
+        return throwError(() => e);
+      }),
+      tap(() => {
+        this.initialAuthenticate = true;
+      })
+    );
   }
 
   private clearUser() {
     this.users$$.next(null);
-  }
-
-  private authenticateAction(callback: Function) {
-    callback();
-    this.initialAuthenticate = true;
-  }
-
-  private logoutAction(callback: Function) {
-    callback();
-    this.clearUser();
   }
 }
