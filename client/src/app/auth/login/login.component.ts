@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Pages } from 'src/app/shared/enums';
@@ -9,13 +9,11 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['../common/auth.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   @ViewChild('form') loginForm!: NgForm;
   submitted = false;
 
   constructor(private authService: AuthService, private router: Router) {}
-
-  ngOnInit(): void {}
 
   onSubmit() {
     this.submitted = true;

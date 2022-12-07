@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Pages } from 'src/app/shared/enums';
@@ -13,7 +13,7 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './signup.component.html',
   styleUrls: ['../common/auth.css'],
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent {
   signupForm!: FormGroup;
   submitted = false;
 
@@ -39,8 +39,6 @@ export class SignupComponent implements OnInit {
       ),
     });
   }
-
-  ngOnInit(): void {}
 
   onSubmit() {
     if (this.signupForm.invalid) {

@@ -3,7 +3,9 @@ import { ErrorHandler, Inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { INTERNAL_ERROR_KEY } from './shared/constants';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class CustomErrorHandler implements ErrorHandler {
   constructor(
     @Inject(INTERNAL_ERROR_KEY) private internalErrors$$: BehaviorSubject<any>
