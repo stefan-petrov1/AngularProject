@@ -30,6 +30,11 @@ const routes: Routes = [
       import('./auth/auth-routing.module').then((m) => m.AuthRoutingModule),
   },
   {
+    path: '',
+    loadChildren: () =>
+      import('./posts/posts-routing.module').then((m) => m.PostsRoutingModule),
+  },
+  {
     path: '**',
     redirectTo: Pages.NotFound,
   },

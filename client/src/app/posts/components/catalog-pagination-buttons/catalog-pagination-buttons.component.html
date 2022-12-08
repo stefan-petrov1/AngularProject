@@ -1,0 +1,6 @@
+<div class="pagination-buttons-container">
+  <button *ngFor="let _ of buttonArr; let i = index" (click)="onClick(i + 1)"
+    [ngClass]="{'pagination-button': true, 'selected-pagination-button': selectedValue === i + 1}">
+    {{i + 1}}
+  </button>
+</div>

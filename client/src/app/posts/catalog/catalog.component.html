@@ -1,0 +1,68 @@
+<article class="catalog-center-container">
+  <form class="catalog" [formGroup]="catalogForm">
+    <div class="catalog-filters-container">
+      <p class="product-show-amount-text">
+        <span>Show</span>
+        <select class="product-show-amount-selector" name="productCount" formControlName="productCount">
+          <option value="4">4 products</option>
+          <option value="8">8 products</option>
+          <option value="12">12 products</option>
+        </select>
+      </p>
+    </div>
+    <div class="catalog-container">
+      <div class="all-filters-container">
+        <div class="filter-container">
+          <p class="filter-title">Price</p>
+          <div class="product-filter-container">
+            <input class="filter-checkbox" type="radio" name="priceFilter" value="All" formControlName="priceFilter" />
+            <p class="filter-text">All</p>
+          </div>
+          <div class="product-filter-container">
+            <input type="radio" class="filter-checkbox" name="priceFilter" value="price >= 100 AND price <= 499"
+              formControlName="priceFilter" />
+            <p class="filter-text">100 - 499$</p>
+          </div>
+          <div class="product-filter-container">
+            <input class="filter-checkbox" type="radio" name="priceFilter" value="price >= 500 AND price <= 999"
+              formControlName="priceFilter" />
+            <p class="filter-text">500 - 999$</p>
+          </div>
+          <div class="product-filter-container">
+            <input class="filter-checkbox" type="radio" name="priceFilter" value="price >= 1000 AND price <= 1999"
+              formControlName="priceFilter" />
+            <p class="filter-text">1000 - 1999$</p>
+          </div>
+          <div class="product-filter-container">
+            <input class="filter-checkbox" type="radio" value="price >= 2000 AND price <= 3999" name="priceFilter"
+              formControlName="priceFilter" />
+            <p class="filter-text">2000 - 3999$</p>
+          </div>
+          <div class="product-filter-container">
+            <input class="filter-checkbox" type="radio" value="price >= 4000 AND price <= 5999" name="priceFilter"
+              formControlName="priceFilter" />
+            <p class="filter-text">4000 - 5999$</p>
+          </div>
+          <div class="product-filter-container">
+            <input class="filter-checkbox" type="radio" value="price >= 6000" name="priceFilter"
+              formControlName="priceFilter" />
+            <p class="filter-text">6000$+</p>
+          </div>
+        </div>
+      </div>
+
+      <p *ngIf="((length$$ | async) || 0) <= 0" style="padding: 50% 0">
+        No items match current filters
+      </p>
+
+      <div class="catalog-products-container">
+        <app-catalog-post *ngFor="let post of posts$ | async" [post]="post"></app-catalog-post>
+      </div>
+    </div>
+
+    <div class="pagination-buttons-container">
+      <app-catalog-pagination-buttons (pageChanged)="onPageChange($event)"
+        [length]="paginationButtonsLength"></app-catalog-pagination-buttons>
+    </div>
+  </form>
+</article>

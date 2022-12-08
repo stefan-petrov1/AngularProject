@@ -1,0 +1,11 @@
+<a to={post._id} class="product-card">
+  <div class="product-preview">
+    <img class="product-image" [src]="post.imageUrl" />
+    <p class="product-title">{{post.title | shorten : titleThreshold}}</p>
+  </div>
+  <div class="product-hr"></div>
+  <div>
+    <p class="product-buy-now-text">BUY NOW</p>
+    <p class="product-price">${{post.price}}</p>
+  </div>
+</a>

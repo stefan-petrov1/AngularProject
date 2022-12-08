@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { CustomErrorHandler } from './custom-error-handler';
+import { PostsModule } from './posts/posts.module';
 import { API_ERROR_KEY, INTERNAL_ERROR_KEY } from './shared/constants';
 import { SharedModule } from './shared/shared.module';
 
@@ -16,10 +17,11 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule,
     RouterModule,
     CoreModule,
     SharedModule,
+    AuthModule,
+    PostsModule,
   ],
   providers: [
     {
