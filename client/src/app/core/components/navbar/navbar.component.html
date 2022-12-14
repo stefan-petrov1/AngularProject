@@ -14,9 +14,7 @@
 
     <a routerLink="/cart" class="shopping-cart-container">
       <img class="shopping-cart-icon" alt="Shopping Cart" src="assets/images/header/shopping-cart-icon.png" />
-
-      <!-- Display only if there are cart items -->
-      <p class="shopping-cart-item-count">2</p>
+      <p *ngIf="cartLength > 0" class="shopping-cart-item-count">{{cartLength}}</p>
     </a>
   </div>
 </nav>

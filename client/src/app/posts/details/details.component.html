@@ -27,7 +27,7 @@
           <button [disabled]="disabled" [ngStyle]="{
               cursor: disabled ? 'not-allowed' : '',
               opacity: disabled ? '0.7': ''
-            }" class="details-buy-button" onClick=addToCartClickHandler>
+            }" class="details-buy-button" (click)="addToCart()">
             {{
             isOwner
             ? 'THE ITEM IS YOURS'
