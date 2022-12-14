@@ -10,7 +10,6 @@
     </a>
   </div>
   <div class="right-section">
-    <a routerLink="/catalog">Catalog</a>
     <ng-container *ngIf="authService.isUserAuthenticated; then userSection; else guestSection"></ng-container>
 
     <a routerLink="/cart" class="shopping-cart-container">
@@ -24,6 +23,7 @@
 
 <ng-template #userSection>
   <div class="user-section navbar-section">
+    <a routerLink="/catalog">Catalog</a>
     <a routerLink="/create">Create</a>
     <!-- Not sure if I have time -->
     <!-- <a routerLink="/profile">Profile</a> -->

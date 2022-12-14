@@ -21,6 +21,7 @@ export class AuthService {
 
   public isUserAuthenticated = false;
   public initialAuthenticate = false;
+  // public user: null | IUser = null;
   public user$ = this.users$$.asObservable();
 
   constructor(
