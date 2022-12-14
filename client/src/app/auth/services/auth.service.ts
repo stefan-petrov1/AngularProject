@@ -21,7 +21,7 @@ export class AuthService {
 
   public isUserAuthenticated = false;
   public initialAuthenticate = false;
-  // public user: null | IUser = null;
+  public user: null | IUser = null;
   public user$ = this.users$$.asObservable();
 
   constructor(
@@ -29,6 +29,7 @@ export class AuthService {
     private localStorage: LocalStorageService
   ) {
     this.user$.subscribe((user) => {
+      this.user = user;
       this.isUserAuthenticated = !!user;
       localStorage.setData(USER_STORAGE_KEY, user ? user : {});
     });

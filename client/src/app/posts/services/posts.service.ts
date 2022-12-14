@@ -24,4 +24,8 @@ export class PostsService {
 
     return this.httpClient.get<number>(`api/data/posts?count${query}`);
   }
+
+  getPostById(id: string) {
+    return this.httpClient.get<IPost>(`api/data/posts/${id}`);
+  }
 }

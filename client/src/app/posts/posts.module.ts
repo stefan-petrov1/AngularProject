@@ -6,12 +6,16 @@ import { SharedModule } from '../shared/shared.module';
 import { CatalogComponent } from './catalog/catalog.component';
 import { CatalogPaginationButtonsComponent } from './components/catalog-pagination-buttons/catalog-pagination-buttons.component';
 import { CatalogPostComponent } from './components/catalog-post/catalog-post.component';
+import { DetailsComponent } from './details/details.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
     CatalogComponent,
     CatalogPostComponent,
     CatalogPaginationButtonsComponent,
+    DetailsComponent,
+    CartComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule, SharedModule, RouterModule],
 })

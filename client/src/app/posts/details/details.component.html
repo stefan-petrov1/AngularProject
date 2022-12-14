@@ -1,0 +1,43 @@
+<article *ngIf="post">
+  <div class="details-modal-background"></div>
+
+  <div class="details-center-flexbox details-modal">
+    <div class="details-container">
+      <img class="details-image" [src]="post.imageUrl" alt="" />
+
+      <div class="details-separator"></div>
+
+      <div class="details-info-container">
+        <span class="close" (click)="exitPage()">
+          &times;
+        </span>
+
+        <div>
+          <p class="details-title">{{post.title}}</p>
+          <p class="details-id">Listing ID: {{post._id}}</p>
+        </div>
+
+        <div>
+          <div class="details-price-container">
+            <p>Current Price</p>
+            <p>${{post.price}}</p>
+          </div>
+
+
+          <button [disabled]="disabled" [ngStyle]="{
+              cursor: disabled ? 'not-allowed' : '',
+              opacity: disabled ? '0.7': ''
+            }" class="details-buy-button" onClick=addToCartClickHandler>
+            {{
+            isOwner
+            ? 'THE ITEM IS YOURS'
+            : isItemInCart
+            ? 'ITEM ALREADY IN CART'
+            : 'ADD TO CART'
+            }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
