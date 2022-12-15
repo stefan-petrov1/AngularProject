@@ -6,7 +6,7 @@ This codebase was created to show a full application built with Angular that use
 
 For convenience, the API server is in the project files so everyone can host it on their own computer. In order to run the server, open a terminal in the server folder and type `node server` or `node server.js`. Make sure you have node installed!
 
-If you want to change the API URL, simply edit `src/environments/environment.ts` and change `apiUrl` to the server's URL (i.e. `localhost:3000/api`)
+If you want to change the API URL, simply edit `client/src/environments/environment.ts` and change `apiUrl` to the server's URL (i.e. `localhost:3000/api`)
 
 # Getting started
 
