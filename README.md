@@ -1,4 +1,4 @@
-### [Demo - soon](about:blank)&nbsp;&nbsp;&nbsp;&nbsp;[Dinosaur's Auction](https://github.com/stefan-petrov1/AngularProject)
+### [Demo](https://angularsoftuniproject.web.app)&nbsp;&nbsp;&nbsp;&nbsp;[Dinosaur's Auction](https://github.com/stefan-petrov1/AngularProject)
 
 This codebase was created to show a full application built with Angular that uses a backend server with CRUD operations, authentication, routing, pagination, and more.
 
