@@ -1,0 +1,34 @@
+<section class="cu-container-center">
+  <article class="cu-container">
+    <p class="sign-title">{{title}} Post</p>
+    <form class="sign-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="sign-field-input-container">
+        <input class="sign-in-field-input" placeholder="Title" type="text" name="title" formControlName="title" />
+        <ng-container *ngIf="form.get('title')?.touched">
+          <p class="sign-error" *ngIf="form.get('title')?.errors?.['required']">Title is required</p>
+          <p class="sign-error" *ngIf="form.get('title')?.errors?.['minlength']">Title must be at least 5 characters
+            long</p>
+        </ng-container>
+      </div>
+      <div class="sign-field-input-container">
+        <input class="sign-in-field-input" placeholder="Image URL" type="text" name="imageUrl"
+          formControlName="imageUrl" />
+        <ng-container *ngIf="form.get('imageUrl')?.touched">
+          <p class="sign-error" *ngIf="form.get('imageUrl')?.errors?.['required']">Image URL is required</p>
+          <p class="sign-error" *ngIf="form.get('imageUrl')?.errors?.['appUrlValidator']">Image URL must be a valid URL
+          </p>
+        </ng-container>
+      </div>
+      <div class="sign-field-input-container">
+        <input class="sign-in-field-input" placeholder="Price" type="number" name="price" formControlName="price" />
+        <ng-container *ngIf="form.get('price')?.touched">
+          <p class="sign-error" *ngIf="form.get('price')?.errors?.['required']">Price is required</p>
+          <p class="sign-error" *ngIf="form.get('price')?.errors?.['min']">Price must be >= 1$</p>
+        </ng-container>
+      </div>
+      <button [disabled]="disabled" class="sign-btn cu-btn" [ngStyle]="{ cursor: disabled ? 'not-allowed' : 'pointer'}">
+        Save
+      </button>
+    </form>
+  </article>
+</section>

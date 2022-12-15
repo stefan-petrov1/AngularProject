@@ -4,6 +4,7 @@ import { Pages } from '../shared/enums';
 import { CanActivateAuth } from '../shared/guards/auth.activate';
 import { CartComponent } from './cart/cart.component';
 import { CatalogComponent } from './catalog/catalog.component';
+import { CreateEditComponent } from './create-edit/create-edit.component';
 import { DetailsComponent } from './details/details.component';
 
 const routes: Routes = [
@@ -32,6 +33,24 @@ const routes: Routes = [
     data: {
       reqAuth: true,
       title: 'Cart',
+    },
+  },
+  {
+    path: Pages.Create,
+    component: CreateEditComponent,
+    canActivate: [CanActivateAuth],
+    data: {
+      reqAuth: true,
+      title: 'Create',
+    },
+  },
+  {
+    path: Pages.Edit,
+    component: CreateEditComponent,
+    canActivate: [CanActivateAuth],
+    data: {
+      reqAuth: true,
+      title: 'Edit',
     },
   },
 ];

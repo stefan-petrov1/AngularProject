@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IPost } from 'src/app/shared/interfaces';
+import { IPost, PostData } from 'src/app/shared/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -27,5 +27,13 @@ export class PostsService {
 
   getPostById(id: string) {
     return this.httpClient.get<IPost>(`api/data/posts/${id}`);
+  }
+
+  createPost(postData: PostData) {
+    return this.httpClient.post<IPost>('api/data/posts', postData);
+  }
+
+  editPost(postData: PostData, id: string) {
+    return this.httpClient.put<IPost>(`api/data/posts/${id}`, postData);
   }
 }

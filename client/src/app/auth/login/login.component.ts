@@ -7,7 +7,7 @@ import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['../common/auth.css'],
+  styleUrls: ['../../shared/common/auth.css'],
 })
 export class LoginComponent {
   @ViewChild('form') loginForm!: NgForm;
