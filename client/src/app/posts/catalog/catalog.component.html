@@ -19,6 +19,11 @@
             <p class="filter-text">All</p>
           </div>
           <div class="product-filter-container">
+            <input type="radio" class="filter-checkbox" name="priceFilter" value="price >= 1 AND price <= 99"
+              formControlName="priceFilter" />
+            <p class="filter-text">1 - 99$</p>
+          </div>
+          <div class="product-filter-container">
             <input type="radio" class="filter-checkbox" name="priceFilter" value="price >= 100 AND price <= 499"
               formControlName="priceFilter" />
             <p class="filter-text">100 - 499$</p>

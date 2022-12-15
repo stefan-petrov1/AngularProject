@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { NavigationService } from 'src/app/core/services/navigation.service';
 import { Pages } from 'src/app/shared/enums';
 import { IPost } from 'src/app/shared/interfaces';
 import { CartService } from '../services/cart.service';
@@ -23,7 +24,8 @@ export class DetailsComponent implements OnInit {
     private router: Router,
     private postsService: PostsService,
     private authService: AuthService,
-    private cartService: CartService
+    private cartService: CartService,
+    private navigationService: NavigationService
   ) {}
 
   ngOnInit(): void {
@@ -48,7 +50,13 @@ export class DetailsComponent implements OnInit {
   }
 
   exitPage() {
-    this.router.navigate([Pages.Catalog]);
+    const location = this.navigationService.getPreviousLocation();
+
+    if (location.includes(Pages.Catalog)) {
+      this.navigationService.back();
+    } else {
+      this.router.navigate([Pages.Catalog]);
+    }
   }
 
   addToCart() {
