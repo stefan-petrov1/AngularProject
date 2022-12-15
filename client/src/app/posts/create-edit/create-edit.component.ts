@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { NavigationService } from 'src/app/core/services/navigation.service';
 import { API_ERROR_KEY } from 'src/app/shared/constants';
@@ -90,14 +90,20 @@ export class CreateEditComponent implements OnInit {
 
     const data = this.form.value as PostData;
 
-    this.handleRequest(data).subscribe((v) => {
-      this.router.navigate([Pages.Details.replace(':id', v._id)]);
-    });
+    this.handleRequest(data).subscribe();
   }
 
   private handleRequest(data: PostData) {
     return !!this.id
-      ? this.postsService.editPost(data, this.id)
-      : this.postsService.createPost(data);
+      ? this.postsService
+          .editPost(data, this.id)
+          .pipe(tap(() => this.router.navigate([Pages.Profile])))
+      : this.postsService
+          .createPost(data)
+          .pipe(
+            tap((v) =>
+              this.router.navigate([Pages.Details.replace(':id', v._id)])
+            )
+          );
   }
 }

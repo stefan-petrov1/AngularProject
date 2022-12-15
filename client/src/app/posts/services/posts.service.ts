@@ -17,6 +17,11 @@ export class PostsService {
     return this.httpClient.get<IPost[]>(`api/data/posts${query}`);
   }
 
+  getPostsByOwnerId(ownerId: string) {
+    const query = `?where=${encodeURIComponent(`_ownerId="${ownerId}"`)}`;
+    return this.httpClient.get<IPost[]>(`api/data/posts${query}`);
+  }
+
   getLength(query: string = '') {
     if (query) {
       query = '&' + query;
@@ -35,5 +40,9 @@ export class PostsService {
 
   editPost(postData: PostData, id: string) {
     return this.httpClient.put<IPost>(`api/data/posts/${id}`, postData);
+  }
+
+  deletePost(id: string) {
+    return this.httpClient.delete(`api/data/posts/${id}`);
   }
 }

@@ -4,6 +4,7 @@ import { Pages } from '../shared/enums';
 import { CanActivateAuth } from '../shared/guards/auth.activate';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
@@ -31,6 +32,15 @@ const routes: Routes = [
     canActivate: [CanActivateAuth],
     data: {
       title: 'Logout',
+      reqAuth: true,
+    },
+  },
+  {
+    path: Pages.Profile,
+    component: ProfileComponent,
+    canActivate: [CanActivateAuth],
+    data: {
+      title: 'Profile',
       reqAuth: true,
     },
   },

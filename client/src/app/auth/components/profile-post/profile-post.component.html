@@ -1,0 +1,11 @@
+<app-post-item [post]="post" #profilePost>
+  <div class="buttons">
+    <button class="profile-item-btn edit-btn" [disabled]="submitted" (click)="handleEdit()">
+      Edit
+    </button>
+
+    <button class="profile-item-btn delete-btn" [disabled]="submitted" (click)="handleDelete()">
+      Delete
+    </button>
+  </div>
+</app-post-item>

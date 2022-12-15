@@ -1,0 +1,40 @@
+@media only screen and (max-width: 730px) {
+  .buttons {
+    bottom: 0px;
+  }
+
+  .profile-item-btn {
+    font-size: 15px !important;
+  }
+
+  .times-purchased {
+    font-size: 10px;
+  }
+}
+
+.profile-item-btn {
+  border: 1px solid rgb(2, 123, 208);
+  background-color: rgb(2, 123, 208);
+  padding: 0.4em 0.9em;
+  border-radius: 5px;
+
+  color: white;
+
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 20px;
+
+  transition: background-color 0.1s, color 0.1s;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+.buttons {
+  position: absolute;
+  right: 0px;
+
+  display: grid;
+  margin: 40px 0;
+  row-gap: 10px;
+  grid-auto-rows: 1fr;
+}

@@ -1,0 +1,15 @@
+<section class="profile-wrapper">
+  <div>
+    <p class="profile-title">PROFILE PAGE</p>
+    <app-profile-email [email]="email"></app-profile-email>
+  </div>
+
+  <div class="profile-container" *ngIf="(posts$ | async) as posts">
+    <p>Post Count: {{posts.length - deletedPostsCount}}</p>
+    <h3 *ngIf="posts.length - deletedPostsCount <= 0">No posts yet!</h3>
+
+    <div class="profile-posts-container" #postContainer>
+      <app-profile-post *ngFor="let post of posts" [post]="post" (onDelete)="handleDelete($event)"></app-profile-post>
+    </div>
+  </div>
+</section>

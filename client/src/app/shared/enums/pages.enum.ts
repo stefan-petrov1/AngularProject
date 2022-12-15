@@ -4,8 +4,7 @@ export enum Pages {
   Catalog = 'catalog',
   Details = 'catalog/:id',
   Cart = 'cart',
-  // Not sure if I have time
-  // Profile = 'profile',
+  Profile = 'profile',
   Create = 'create',
   Edit = 'edit/:id',
   Login = 'login',
