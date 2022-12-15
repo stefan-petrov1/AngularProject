@@ -8,26 +8,33 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
   providedIn: 'root',
 })
 export class CartService {
+  private defaultValue = [];
+
   private cart$$ = new BehaviorSubject<IPost[]>(
-    this.localStorageService.checkForValue(CART_STORAGE_KEY, true) || []
+    this.localStorageService.checkForValue(CART_STORAGE_KEY, true) ||
+      this.defaultValue
   );
 
   public cart$ = this.cart$$.asObservable();
-  private cart: IPost[] = [];
+  public cart: IPost[] = [];
 
   constructor(private localStorageService: LocalStorageService) {
     this.cart$.subscribe((cart) => {
-      console.log(cart);
+      this.cart = cart;
       this.localStorageService.setData(CART_STORAGE_KEY, cart);
     });
   }
 
   addToCart(item: IPost) {
-    if (this.cart.some((x) => x._id === item._id)) {
-      return;
-    }
+    this.cart$$.next([...this.cart, item]);
+  }
 
-    this.cart.push(item);
-    this.cart$$.next(this.cart);
+  removeFromCart(id: string) {
+    const cart = this.cart.filter((x) => x._id !== id);
+    this.cart$$.next(cart);
+  }
+
+  clearCart() {
+    this.cart$$.next(this.defaultValue);
   }
 }

@@ -33,7 +33,7 @@ export class DetailsComponent implements OnInit {
     combineLatest([this.cartService.cart$, post$]).subscribe({
       next: ([cart, post]) => {
         this.post = post;
-        this.isOwner = this.authService.user?._id === post._id;
+        this.isOwner = this.authService.user?._id === post._ownerId;
         this.isItemInCart = cart.some((x) => x._id === post._id);
         this.disabled = this.isOwner || this.isItemInCart;
       },

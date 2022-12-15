@@ -1,4 +1,4 @@
-<a to={post._id} class="product-card">
+<a [routerLink]="'/catalog/' + post._id" class="product-card">
   <div class="product-preview">
     <img class="product-image" [src]="post.imageUrl" />
     <p class="product-title">{{post.title | shorten : titleThreshold}}</p>

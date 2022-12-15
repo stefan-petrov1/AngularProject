@@ -1,0 +1,14 @@
+<div class="post-item">
+  <img class="post-item-image" [src]="post.imageUrl" alt="" />
+
+  <div class="post-item-image-separator"></div>
+
+  <div class="post-item-info">
+    <div>
+      <p class="post-item-title">{{post.title}}</p>
+      <p class="post-item-id">Listing ID: {{post._id}}</p>
+    </div>
+    <p class="post-item-price">Price: ${{post.price}}</p>
+  </div>
+  <ng-content></ng-content>
+</div>

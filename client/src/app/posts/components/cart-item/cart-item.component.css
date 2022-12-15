@@ -1,0 +1,25 @@
+.cart-item-owner-error {
+  position: absolute;
+  color: red;
+  right: 20px;
+  width: 130px;
+  bottom: 10px;
+  text-align: center;
+}
+
+.cart-close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+
+  color: #aaaaaa;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.cart-close:hover,
+.cart-close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}

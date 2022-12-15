@@ -1,0 +1,9 @@
+<app-post-item [post]="post">
+  <span *ngIf="ownerWarnings" class="cart-item-owner-error">
+    You are the owner of this item
+  </span>
+
+  <span class="cart-close" (click)="removeFromCart()">
+    &times;
+  </span>
+</app-post-item>

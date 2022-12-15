@@ -1,1 +1,37 @@
-<p>cart works!</p>
+<article class="cart-container">
+  <div class="cart-data-container">
+    <div class="cart-item-container">
+      <h3 *ngIf="cart.length <= 0" style="text-align: 'center'">
+        No items yet! <br />
+        Want to add some? -
+        <a routerLink="/catalog">Catalog</a>
+      </h3>
+
+
+      <app-cart-item *ngFor="let post of cart;" (onOwnerAdd)="incrementOwnerCount()"
+        (onOwnerRemove)="decrementOwnerCount()" (onRemove)="handleRemove($event)"
+        [ownerWarnings]="post._ownerId === authService.user?._id" [post]="post"></app-cart-item>
+    </div>
+    <div class="cart-data">
+      <div class="cart-data-info">
+        <div class="cart-data-price-container">
+          <p>Subtotal: </p>
+          <p>${{totalPrice}}</p>
+        </div>
+
+        <div class="cart-button-wrapper">
+          <button *ngIf="!disabled" (click)="checkoutHandler()" class="cart-checkout-btn">
+            Checkout
+          </button>
+
+          <p *ngIf="disabled" class="cart-button-error">
+            {{!cart.length ? 'Cart must not be empty!' : ''}}
+            {{(cart.length && ownerCount > 0) ? 'Cart includes some of your own items.' : ''}}
+          </p>
+
+          <p *ngIf="hasCheckout" class="cart-button-success">Successful checkout!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
